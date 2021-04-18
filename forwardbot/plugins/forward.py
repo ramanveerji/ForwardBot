@@ -157,7 +157,7 @@ async def handler(event):
                         if media_type(message) == type or type == 'All':
                             try:
                                 if media_type(message) == 'Document':
-                                    await client.send_file(tochat, message.document, caption=f"<b>test time</b>")
+                                    await client.send_file(tochat, message.document, caption=" 📽️𝗖𝗛𝗔𝗡𝗡𝗘𝗟 : @BoX_0fFiCe \n 📽️𝗖𝗛𝗔𝗡𝗡𝗘𝗟 : @MoviE_LinkS_0nlY \n 💠𝗚𝗥𝗢𝗨𝗣 : @MV_Mania")
                                     try:
                                         if len(str(message.file.name)) <= 95:
                                             print("Succesfully forwarded: " + str(message.file.name))
@@ -179,7 +179,7 @@ async def handler(event):
                                     await m.edit(f"Now Forwarding {type}.")
                                 else:
                                     try:
-                                        await client.send_message(tochat, message, caption=f"<b> test</b>")
+                                        await client.send_message(tochat, message)
                                         try:
                                             if len(str(message.message)) == 0:
                                                 logmsg = media_type(message)
