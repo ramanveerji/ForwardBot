@@ -142,8 +142,8 @@ async def handler(event):
             m=await event.respond("Trying Forwarding")
             fromchat = int(fromchannel)
             tochat = int(tochannel)
-            count = 3593
-            mcount = 991
+            count = 99999
+            mcount = 50000
             global MessageCount
             offset = int(offsetid)
             if offset:
