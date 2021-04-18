@@ -212,7 +212,7 @@ async def handler(event):
                         status.remove("1")
                         await m.edit(f"You have send {MessageCount} messages.\nWaiting for 10 minutes.")
                         await asyncio.sleep(600)
-                        mcount = 991
+                        mcount = 50000
                         print("Starting after 10 mins")
                         await m.edit("Starting after 10 mins")
                 else:
@@ -222,7 +222,7 @@ async def handler(event):
                     status.remove("1")
                     await m.edit(f"You have send {MessageCount} messages.\nWaiting for 1 hour.")
                     await asyncio.sleep(3600)
-                    count = 3593
+                    count = 99999
                     print("Starting after 1 hour")
                     await m.edit("Starting after 1 hour")
                     
