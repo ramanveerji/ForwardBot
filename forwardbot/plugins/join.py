@@ -39,7 +39,8 @@ async def handler(event):
                         await event.respond("You have already joined the Channel")
                     except errors.InviteHashExpiredError:
                         await event.respond("Wrong URL")
-                if type == 'public':
+                    return
+                elif type == 'public':
                     try:
                         await client(JoinChannelRequest(chann.group(1)))
                         await event.respond("Successfully joined the Channel")

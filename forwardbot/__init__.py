@@ -17,10 +17,10 @@ bot = TelegramClient('bot', Config.API_ID, Config.API_HASH).start(bot_token=Conf
 
 client = TelegramClient(StringSession(Config.STRING_SESSION), Config.API_ID, Config.API_HASH)
 
-if bool(ENV):
-    CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
-
-    if CONSOLE_LOGGER_VERBOSE:
+if ENV:
+    if CONSOLE_LOGGER_VERBOSE := sb(
+        os.environ.get("CONSOLE_LOGGER_VERBOSE", "False")
+    ):
         basicConfig(
             format="[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s",
             level=DEBUG,
@@ -48,10 +48,7 @@ if Config.SUDO_USERS is None:
     sys.exit(1)
 
 async def is_sudo(event):
-    if str(event.sender_id) in Config.SUDO_USERS:
-        return True
-    else:
-        return False
+    return str(event.sender_id) in Config.SUDO_USERS
 @bot.on(events.NewMessage(pattern=r'/cancel'))
 async def handler(event):
     if not await is_sudo(event):
