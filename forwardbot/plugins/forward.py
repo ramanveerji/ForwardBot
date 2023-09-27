@@ -11,7 +11,7 @@ from datetime import timedelta
 
 MessageCount = 0
 BOT_STATUS = "0"
-status = set(int(x) for x in (BOT_STATUS).split())
+status = {int(x) for x in (BOT_STATUS).split()}
 datetimeFormat = '%Y-%m-%d %H:%M:%S.%f'
 
 start = None
@@ -147,7 +147,7 @@ async def handler(event):
             global MessageCount
             offset = int(offsetid)
             if offset:
-                offset = offset-1
+                offset -= 1
             print("Starting to forward")
             global start
             start = str(datetime.datetime.now())
@@ -160,11 +160,11 @@ async def handler(event):
                                     await client.send_file(tochat, message.document, caption=" 📽️𝗖𝗛𝗔𝗡𝗡𝗘𝗟 : @BoX_0fFiCe \n 📽️𝗖𝗛𝗔𝗡𝗡𝗘𝗟 : @MoviE_LinkS_0nlY \n 💠𝗚𝗥𝗢𝗨𝗣 : @MV_Mania")
                                     try:
                                         if len(str(message.file.name)) <= 95:
-                                            print("Succesfully forwarded: " + str(message.file.name))
+                                            print(f"Succesfully forwarded: {str(message.file.name)}")
                                         else:
                                             logmsg = str(message.file.name)
-                                            logmsg = logmsg[:95] + "..."
-                                            print("Succesfully forwarded: " + logmsg)
+                                            logmsg = f"{logmsg[:95]}..."
+                                            print(f"Succesfully forwarded: {logmsg}")
                                     except:
                                         print("Unable to retrive data.")
                                     status.add("1")
@@ -181,14 +181,14 @@ async def handler(event):
                                     try:
                                         await client.send_message(tochat, message)
                                         try:
-                                            if len(str(message.message)) == 0:
+                                            if not str(message.message):
                                                 logmsg = media_type(message)
                                             elif len(str(message.message)) <= 95:
                                                 logmsg = str(message.message)
                                             else:
                                                 logmsg = str(message.message)
-                                                logmsg = logmsg[:95] + "..."
-                                            print("Succesfully forwarded: " + logmsg)
+                                                logmsg = f"{logmsg[:95]}..."
+                                            print(f"Succesfully forwarded: {logmsg}")
                                         except:
                                             print("Unable to retrive data.")
                                         status.add("1")
@@ -225,7 +225,7 @@ async def handler(event):
                     count = 99999
                     print("Starting after 1 hour")
                     await m.edit("Starting after 1 hour")
-                    
+
         except ValueError:
             await m.edit("You must join the channel before starting forwarding. Use /join")
             return

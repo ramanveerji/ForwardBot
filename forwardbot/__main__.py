@@ -6,13 +6,13 @@ from sys import argv
 from forwardbot.utils import start_forwardbot
 import glob
 
-if len(argv) not in (1, 3, 4):
-    bot.disconnect()
-    client.disconnect()
-else:
+if len(argv) in {1, 3, 4}:
     bot.start(bot_token=Config.BOT_TOKEN)
     client.start()
 
+else:
+    bot.disconnect()
+    client.disconnect()
 path = "forwardbot/plugins/*.py"
 files = glob.glob(path)
 for name in files:

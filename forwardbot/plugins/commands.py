@@ -7,7 +7,7 @@ from forwardbot import bot
 MessageCount = 0
 
 BOT_STATUS = "0"
-status = set(int(x) for x in (BOT_STATUS).split())
+status = {int(x) for x in (BOT_STATUS).split()}
 help_msg = Config.HELP_MSG
 sudo_users = Config.SUDO_USERS
 
